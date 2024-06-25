@@ -14,5 +14,8 @@ Examples(A B +):
 - '8 9 3 * +' is the same as '8 + (9 * 3)'
 - '4 7 + 3 2 - *' is the same as '(4 + 7) * (3 - 2)'
 
+## Output:
+The output will be the postfix expression, the expression, but in infix(a operator b) and the result of the expression.
+
 ## Purpose:
 The purpose if this project is to exercise the data structure - stack, Git and GitHub skills.

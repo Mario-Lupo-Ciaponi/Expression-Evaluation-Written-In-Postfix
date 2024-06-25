@@ -4,6 +4,13 @@ Evaluation
 """
 
 
+def is_operand(element):
+    """
+    Sees if the element is and operand(e.g. '4', '2', '9' etc.)
+    """
+    return element.isdigit() or element[0] == "-" and len(element) > 1
+
+
 def is_whole_number(number):
     """
     Sees if the number is whole or not.
@@ -12,7 +19,32 @@ def is_whole_number(number):
 
 
 def is_zero(number):
+    """
+    Sees if the number is zero.
+    """
     return number == 0
+
+
+def get_infix(expression):
+    """
+    Turns the postfix expression into a infix expression.
+    """
+
+    stack = []
+
+    for element in expression:
+        if is_operand(element):  # e.g '5', '1' and '7'
+            stack.insert(0, element)
+        else:  # It is an operation('+', '-', '*' and '/').
+            first_operand = stack[0]
+            stack.pop(0)
+
+            second_operand = stack[0]
+            stack.pop(0)
+
+            stack.insert(0, "(" + second_operand + " " + element + " " + first_operand + ")")
+
+    return stack[0]
 
 
 def sum_operation(stack_of_numbers):
@@ -93,7 +125,7 @@ def postfix_expression_evaluation_result(expression):
 
     if is_valid:
         for element in expression:
-            if element.isdigit() or element[0] == "-" and len(element) > 1:
+            if is_operand(element):
                 stack_of_numbers.append(int(element))
             else:
                 if element == "+":
@@ -123,6 +155,10 @@ def main():
     if is_valid:
         result = stack_of_numbers[0]
 
+        infix_expression = get_infix(expression)
+
+        print(f"\nPostfix expression: {" ".join(expression)}")
+        print(f"Infix expression: {infix_expression}")
         print(f"Result: {result}")
 
 
