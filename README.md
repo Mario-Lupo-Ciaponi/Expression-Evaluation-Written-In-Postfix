@@ -1,4 +1,4 @@
-# Expression-Evaluation-Written-In-Postfix-
+# Expression-Evaluation-Written-In-Postfix
 A simple console application that can solve expressions written in postfix.
 
 ## What is a postfix expression?
